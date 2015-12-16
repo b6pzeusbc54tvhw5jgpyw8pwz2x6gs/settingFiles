@@ -111,6 +111,7 @@ fi
 #alias rmm="/bin/rm"
 
 export SVN_EDITOR=vim
+export SVN_MERGE=/usr/bin/vimMergeForSvn
 
 export P4CONFIG=~/.p4config
 
@@ -123,7 +124,7 @@ CLASSPATH=$CLASSPATH:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/mysql-connector-jav
 export CLASSPATH
 
 # 타이젠 툴들 연결
-PATH=$PATH:$HOME/tizen-sdk/tools
+#PATH=$PATH:$HOME/tizen-sdk/tools
 
 
 
@@ -196,11 +197,4 @@ export SVN_MERGE=/usr/bin/vimMergeForSvn
 
 export NVM_DIR="/home/ssohjiro/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
-
-
-#export https_proxy=http://168.219.61.252:8080/
-#export http_proxy=http://168.219.61.252:8080/
-
 
