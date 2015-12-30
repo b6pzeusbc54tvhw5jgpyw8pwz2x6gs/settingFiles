@@ -59,5 +59,6 @@ disk uuid 는 `ls -l /dev/disk/by-uuid/` 명령어로확인
 생각해보면 2번의 방법이 더 괜찮은것 같다.
 
 Refer to
-[askubuntu](http://askubuntu.com/questions/232790/automount-ext4-partition-with-user-permission-ownership-fstab)
-[/etc/fstab/](https://en.wikipedia.org/wiki/Fstab)
+1. [askubuntu](http://askubuntu.com/questions/232790/automount-ext4-partition-with-user-permission-ownership-fstab)
+2. [/etc/fstab/](https://en.wikipedia.org/wiki/Fstab)
+3. [how-do-i-avoid-the-s-to-skip-message-on-boot](http://askubuntu.com/questions/120/how-do-i-avoid-the-s-to-skip-message-on-boot)
