@@ -36,14 +36,14 @@ sudo chown -R ssohjiro:ssohjiro /media/NonRaid02
 
 #2. /etc/fstab
 아래를 추가한다
-UUID=disk_uuid  /media/NonRaid02       ext4    defaults        0       2
+`UUID=disk_uuid  /media/NonRaid02       ext4    defaults        0       2`
 
 Note!
 물리 키보드를 조작할 수 없는 원격 서버의 경우 `nobootwait` 옵션을 추가하는 것이 좋다.
 타이핑 실수 등으로 위의 코드가 잘못 될 경우 skip 할꺼냐 recover manually 할꺼냐 고르는 메뉴가 나오면서
 부팅을 hold 시킨다. ssh 접속이 되지 않기 때문에 원격으론 아무것도 할 수 없는 상태!! 
 실수를 대비해 아래와 같이 해주는 것이 좋다.
-UUID=disk_uuid  /media/NonRaid02       ext4    nobootwait        0       2
+`UUID=disk_uuid  /media/NonRaid02       ext4    nobootwait        0       2`
 
 /media/NonRaid02 디렉토리는 존재해야함
 disk uuid 는 `ls -l /dev/disk/by-uuid/` 명령어로확인
