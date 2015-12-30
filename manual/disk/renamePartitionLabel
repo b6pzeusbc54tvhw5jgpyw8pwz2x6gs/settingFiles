@@ -1,0 +1,4 @@
+sudo e2label /dev/sdb1 "mydiskname"
+
+partition 이 1개일땐 아래처럼 해야 되는듯
+sudo e2label /dev/sdb "mydiskname"
