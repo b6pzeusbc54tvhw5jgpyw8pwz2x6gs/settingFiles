@@ -17,3 +17,6 @@ ssohjiro@ubuntuParallels:~$ pm2 startup
 이제 dump.pm2 파일에 있는대로 재부팅 후 프로세서들을 다시 실행함.
 
 실행 스크립트인 process.json 파일이 변경되었다면 다시 `pm2 save` 필요.
+
+
+### 80번 포트는 아마 권한문제로 실행이 안될꺼임. manual 따로 있음.
