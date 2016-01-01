@@ -1,3 +1,4 @@
+```
 VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Jan  2 2014 19:39:02)
 Included patches: 1-52
 Modified by pkg-vim-maintainers@lists.alioth.debian.org
@@ -38,13 +39,14 @@ Small version without GUI.  Features included (+) or not (-):
   fall-back for $VIM: "/usr/share/vim"
 Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H     -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -DTINY_VIMRC -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1
 Linking: gcc   -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed -o vim    -lSM -lICE -lXpm -lXt -lX11 -lXdmcp -lSM -lICE  -lm -ltinfo  -lselinux -lacl -lattr -ldl
-
+```
 
 `sudo apt-get install vim` 으로 설치한번 해주면,
 Small version 에서 아래처럼 Huge version으로 업그레이드 되는 것을 볼 수 있다.
 +python 기능도 enable 되어있다.
 패치 버전이 좀 낮지만 따로 소스다운-컴파일 없이 충분히 쓸수 있는 버전이라 굳.
 
+```
 VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Jan  2 2014 19:39:32)
 Included patches: 1-52
 Modified by pkg-vim-maintainers@lists.alioth.debian.org
@@ -85,5 +87,5 @@ Huge version without GUI.  Features included (+) or not (-):
   fall-back for $VIM: "/usr/share/vim"
 Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H     -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1
 Linking: gcc   -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed -o vim        -lm -ltinfo -lnsl  -lselinux  -lacl -lattr -lgpm -ldl    -L/usr/lib/python2.7/config-x86_64-linux-gnu -lpython2.7 -lpthread -ldl -lutil -lm -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
-
+```
 
