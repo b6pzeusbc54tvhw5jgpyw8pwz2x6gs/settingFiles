@@ -1,3 +1,6 @@
+우분우 14.04 에서는 preload 되어있는 vim 이 7.4 버전이라 따로 최신버전을 깔아줄 필요가 없다.
+하지만 아래처러 Small version 이라 몇몇 플러그인들이 동작을 안한다.
+
 ```
 VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Jan  2 2014 19:39:02)
 Included patches: 1-52
