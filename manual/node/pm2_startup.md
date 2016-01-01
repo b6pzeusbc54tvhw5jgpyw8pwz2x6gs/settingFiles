@@ -3,7 +3,6 @@
 ssohjiro@ubuntuParallels:~$ pm2 startup
 [PM2] You have to run this command as root. Execute the following command:
       sudo su -c "env PATH=$PATH:/usr/local/bin pm2 startup linux -u ssohjiro --hp /home/ssohjiro"
-ssohjiro@ubuntuParallels:~$ 
 ```
 
 `sudo su -c "env PATH=$PATH:/usr/local/bin pm2 startup linux -u ssohjiro --hp /home/ssohjiro"` 
