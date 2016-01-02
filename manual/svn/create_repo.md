@@ -36,4 +36,7 @@ corcoFiles$ svn import . file:///home/ssohjiro/svnRepos/repo1/trunk -m “import
 cd ..
 rm -rf corcoFiles
 svn co file:///home/ssohjiro/svnRepos/repo1/trunk corcoFiles
+
+로컬에서도 svn:// 잘 되는듯?
+(svn co svn://utopos.me/corcoFiles/trunk corcoFiles)
 ```
