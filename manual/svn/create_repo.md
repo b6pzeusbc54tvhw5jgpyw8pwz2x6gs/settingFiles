@@ -1,5 +1,5 @@
 [Refer to that blog](http://www.rackspace.com/knowledge_center/article/multiple-repositories-and-subversion)
-
+```
 mkdir repositories
 svnadmin create repositories/repo1
 vi repositories/repo1/conf/svnserve.conf
@@ -25,3 +25,4 @@ svn co file:///home/ssohjiro/repositories/... project1
 
 .svnignore 파일에 svn 예외파일들을 넣어놓고,
 svn propset svn:ignore -F .svnignore .
+```
