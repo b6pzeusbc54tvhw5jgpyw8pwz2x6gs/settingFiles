@@ -17,6 +17,14 @@ vi conf/passwd (for passwd)
 
 import 를 하자
 ```
+// from remote
+corcoFile$ ls
+//test.corco
+corcoFile$ svn import . svn://utopos.me/repo1/trunk -m "import to svn project"
+이게 체크아웃 된 것은 아니다. 체크하웃은 따로 해야함.
+svn co svn://utopos.me/corcoFiles/trunk corcoFiles
+
+// from local
 cd ~/projects/
 mkdir project1
 touch project1/initFile.txt
