@@ -13,31 +13,27 @@ auth-access = write
 password-db = passwd
 
 vi conf/passwd (for passwd)
+
+//절대경로로 서버 실행
+svnserve -d -r /home/ssohjiro/svnRepos
+
 ```
 
 import 를 하자
 ```
 // from remote
-corcoFile$ ls
+corcoFiles$ ls
 //test.corco
-corcoFile$ svn import . svn://utopos.me/repo1/trunk -m "import to svn project"
+corcoFiles$ svn import . svn://utopos.me/repo1/trunk -m "import to svn project"
 이게 체크아웃 된 것은 아니다. 체크하웃은 따로 해야함.
+cd ..
+rm -rf corcoFiles
 svn co svn://utopos.me/corcoFiles/trunk corcoFiles
 
 // from local
-cd ~/projects/
-mkdir project1
-touch project1/initFile.txt
-svn import project1 file:///home/ssohjiro/svnRepos/... -m “import project1”
-또는
-svn import project1 file:///home/ssohjiro/svnRepos/... -m “import project1”
 
-(svnserve -d -r /home/ssohjiro/repositores)
-
-rm -rf proejct1
-svn co file:///home/ssohjiro/svnRepos/... project1
-
-
-.svnignore 파일에 svn 예외파일들을 넣어놓고,
-svn propset svn:ignore -F .svnignore .
+corcoFiles$ svn import . file:///home/ssohjiro/svnRepos/repo1/trunk -m “import to svn project"
+cd ..
+rm -rf corcoFiles
+svn co file:///home/ssohjiro/svnRepos/repo1/trunk corcoFiles
 ```
