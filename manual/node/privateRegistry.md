@@ -65,6 +65,9 @@ main$ npm i mainCode --production
 
 자 그렇다면 위의 2. 파일 빠지는 실수도 잘 빨생하지 않을 것이다.
 메일로 업데이트를 알려주기 전 검증을 한다면 거기서 발견되고 고친 후 업데이트를 알려줄 테니
+내가 낸 실수를 다른곳에서 발견하여 그걸 나에게 메일로 설명을 해주고 난 또 메일을 열어 그걸 보며 이해하는건
+남에 일 참겨하는게 삶의 낙인 친구들을 빼곤 정말로 극심한 비효율중에 비효율이다.
+물론 어떤 실수는 다른 모듈들과 함께 조립되어서 발견되는 그런 실수도 있을것이다. 예기치못한...
 
 대략 피곤한 20 가지 일이 간단한 3가지 명령어로 줄어들었다.
 하지만 아래 세가지 사전작업이 있고 이것은 꽤 공수가 많이 들 수 있다.
@@ -78,3 +81,76 @@ main$ npm i mainCode --production
 3번은 공수가 꽤 많이든다. 역시 노하우 및 자신의 코드자산들이 쌓이면 조금씩 편해진다.
 
 # 사설 npm 설치
+
+## 먼저 couchDB 가 설치되어 있어야한다. 우분투 14.04 를 기준으로 한다.
+
+https://launchpad.net/~couchdb/+archive/ubuntu/stable 페이지에 들어가 참고하면서 아래를 실행시키자
+```shell
+# install the ppa-finding tool
+sudo apt-get install software-properties-common -y
+
+# add the ppa
+sudo add-apt-repository ppa:couchdb/stable -y
+
+# update cached list of packages
+sudo apt-get update -y
+
+# remove any existing couchdb binaries
+sudo apt-get remove couchdb couchdb-bin couchdb-common -yf
+
+# see my shiny goodness - note the version number displayed and ensure its what you expect
+sudo apt-get install -V couchdb
+```
+
+`couchdb -V` 를 통해 1.6.1 이 깔린것을 확인 하고 실행시키자
+
+```
+# manage via upstart
+sudo stop couchdb
+  couchdb stop/waiting
+# update /etc/couchdb/local.ini with 'bind_address=0.0.0.0' as needed
+sudo start couchdb
+```
+
+다음에 뭐를 할까 npm help registry 를 살펴보자
+`https://github.com/npm/npm-registry-couchapp` 이곳에 가서 하나하나 해보자
+
+curl -X PUT http://localhost:5984/registry
+
+sudo vi /etc/couchdb/local.ini
+```
+[couch_httpd_auth]
+public_fields = appdotnet, avatar, avatarMedium, avatarLarge, date, email, fields, freenode, fullname, github, homepage, name, roles, twitter, type, _id, _rev
+users_db_public = true
+
+[httpd]
+secure_rewrites = false
+
+[couchdb]
+delayed_commits = false
+```
+```
+git clone git://github.com/npm/npm-registry-couchapp
+cd npm-registry-couchapp
+npm install
+```
+```
+npm start \
+  --npm-registry-couchapp:couch=http://admin:password@localhost:5984/registry
+```
+
+에러가 날 것이다.
+`/etc/couchdb/local.ini` 요기에서 admin = password 설정을 해주고 in [admins] 재시작
+`sudo stop couchdb`
+`sudo start couchdb`
+
+
+```
+npm run load \
+  --npm-registry-couchapp:couch=http://admin:password@localhost:5984/registry
+```
+
+```
+npm run copy \
+  --npm-registry-couchapp:couch=http://admin:password@localhost:5984/registry
+```
