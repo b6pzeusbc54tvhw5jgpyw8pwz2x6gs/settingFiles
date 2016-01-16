@@ -8,6 +8,7 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
 
 sudo dpkg i https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 ```
+
 ```
 $ sudo dpkg -i google-chrome-stable_current_amd64.deb 
 Selecting previously unselected package google-chrome-stable.
@@ -30,6 +31,9 @@ Errors were encountered while processing:
  google-chrome-stable
  
  
+ 
+ 
+ 
 $ sudo apt-get install libappindicator1
 Reading package lists... Done
 Building dependency tree       
@@ -38,6 +42,9 @@ You might want to run 'apt-get -f install' to correct these:
 The following packages have unmet dependencies:
  libappindicator1 : Depends: libindicator7 (>= 0.4.90) but it is not going to be installed
 E: Unmet dependencies. Try 'apt-get -f install' with no packages (or specify a solution).
+
+
+
 
 
 $ sudo apt-get -f install 
