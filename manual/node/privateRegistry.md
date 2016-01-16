@@ -154,3 +154,79 @@ npm run load \
 npm run copy \
   --npm-registry-couchapp:couch=http://admin:password@localhost:5984/registry
 ```
+
+
+
+여기까지 했으면
+```
+npm config set \
+  registry=http://localhost:5984/registry/_design/app/_rewrite
+```
+위 명령어로 registry 주소를 방금만든 local private registry 를 바라보게해서 테스트를 해보자
+
+```
+npm i underscore
+```
+`404 Not Found: underscore` 이런 메시지가 나와야 정상이다. 내 사설 registry 에는 아직 아무 패키지도 없으니까.
+아래의 명령으로 공식 npm registry 와 replication 을 맺을수 있다고 한다. ([요 블로그 참고](http://www.clock.co.uk/blog/how-to-create-a-private-npmjs-repository))
+
+당연히 모든 패키지 파일을 받는건 아닐테고...
+(에이 설마 천문학적 디스크공간이 필요할것이다) 200,000 모듈 * 각 릴리스버전 10개씩 * 0.5MB 라고만해도 100,000 MB => 100기가
+음... 생각보다 그렇게 크지 않네 모두 끌어당겨올수도 있겠다싶다.
+
+
+
+아무튼 네트웤속도가 느린 필자의 환경에선 한 100메가 정도까지 가져오다 아래 3번째 명령어로 cancel 하였다.
+
+curl -X POST http://127.0.0.1:5984/_replicate -d '{"source":"http://isaacs.iriscouch.com/registry/", "target":"registry", "create_target":true}' -H "Content-Type: application/json" 
+
+curl -X POST http://127.0.0.1:5984/_replicate -d '{"source":"http://isaacs.iriscouch.com/registry/", "target":"registry", "continuous":true, "create_target":true}' -H "Content-Type: application/json" 
+
+curl -X POST http://127.0.0.1:5984/_replicate -d '{"source":"http://isaacs.iriscouch.com/registry/", "target":"registry", "continuous":true, "create_target":true, "cancel":true}' -H "Content-Type: application/json"
+
+하지만 내 기억에 어디선가 다 끌어올려면 8기가 정도라고 들은것 같다. 몇년 전 글인것 같긴 했지만
+아무래도 meta정보만을 가져오고 실제 바이너리 파일들은 cdn을 당연히 태우겠네싶다.
+테스트를 해봤다.
+npm search promise
+결과가 제법 나온다. 결과중 하나를 골라 `npm i ya-promise` 설치 성공.
+인터넷을 끄고 해본다. (물론 npm un ya-promise, npm cache clean 후 )
+설치가 안된다. 실제 파일은 원격으로 불러오는 것이 확인됐다
+
+또 결과중에 npm i zed 를 인스톨하니 promise 레지스트리에서 모듈을 찾지 못했다는 에러가 뜬다.
+public npm으로 확인하니 
+zed@0.1.0 node_modules/zed
+└── lazypromise@0.1.0 (promise@2.0.0)
+
+디펜던시 모듈의 디펜던시 모듈중에 promise 모듈이 있다. 중간에 replication 을 취소했기 때문에 
+모든 메타정보를 저장하고 있진 않아서 생기는 문제라고 볼 수 있다.
+
+npm adduser test01
+아무렇게나 user 를 만들어 publish , install 을 해보았다. 잘되는 것을 확인.
+차이점은 default registry 에서 adduser 를 하면 새로운 유저일 경우 npmjs.com 에 아카운트가 자동으로 추가되는데
+private registry에선 당연히 이 webpage 띄우는 것도 모르겠고 couchdb 에 추가가되나보다.
+
+좋아 이제 
+어떻게 사용할 것인가 몇가지 옵션이 있다.
+
+1. 그냥 충분한 하드디스크 용량을 보유한 다음 메타데이터 모두 레플리케이션 한다음 모두 받기 (좋은 경험이 될 것같다ㅎㅎ)
+2. User 들이 잘 사용하면된다. official 레지스트리의 모듈을 받을때와 private registry 에서 받을때 각각 `npm i underscore --registry http://~` 넣어주면된다. npm i -g express-generator --registry https://registry.npmjs.org
+2. sinopia - npm
+
+1번은 먼가 이런 npm 같은 것을 직접 만들어볼 사람이라면 규모를 가늠해볼수도 있고
+경험해본다면 여러가지 도움은 될듯하다.
+하지만 npm 구축이 목적이 아닌 나와같이 npm을 단순 업무협업의 도구로 사용할 목적이라면
+너무 많이간샘. 한번 받으면 되는게 아니라 추가되는 세상의 모든 module을 팔로업하려면 항상 리슨을 하고 있어야하고
+프로세서나 네트워크 자원도 관리해줘야한다.
+
+2번.. 사실 나정도 node와 npm에 익숙한 사람이라면 2번을 해도 무리가 없다.
+하지만 private registry 를 구축하여 팀원들 및 타부서와 협업을 목적으로 하는 사람이 2번을 생각한다면
+그사람은 매우 많이 같이일하기 싫은 사람이다.
+수많은 휴먼오류와 안해도 되는 설정들 모듈을 새로 추가할때마다 모든 팀원이 내용을 익히거나해야하고
+자동스크립트가 제공된다해도 그것은 별로이다. npm 에 익숙해지는건 좋지만 지생각을 담아 만든 허접한 자동스크립트를 익히는건 큰 시간 낭비이기 때문. 많은 npm에 익숙하지 않은 팀원들은 익숙해질때까지 수많은 휴먼오류를 낼 것이고 자동 스크립트있다해도 그 스크립트를 만드는 수고, 무수한 스크립트 에러, 가장 별로인건 common 하지 않고 딱 그 환경에서만 필요한 다른곳에서 쓸모없는 것들을 열심히 시간을 들여 익혀야한다는 것이다.
+
+3번. 좋아 이걸로가보자.
+couchdb 까지 안쓰고 파일로 module 을 관리해주며 없는 모듈은 official registry것을 자동으로 땡겨준다고한다.
+npm 을 훅 해서 동작하는 원리인가.
+모든 npm 명령어가 다 지원되는건 아니라고 하니 npm 을 수정하여 만든 또다른 npm인가
+이런경우 npm 기존 높은 버전과의 차이가 많이 날텐데.. 걱정스럽기도 하지만 그래도 쉽게 설치할수 있다니 한번 ㄱ ㄱ
+
