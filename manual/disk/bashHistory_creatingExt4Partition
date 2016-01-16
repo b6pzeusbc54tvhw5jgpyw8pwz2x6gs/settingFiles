@@ -1,0 +1,121 @@
+
+test01@MacBook-Pro:~$ How to create ext4 partition on ubuntu cli
+
+test01@ssohjiroSeoul:~$ sudo parted
+
+GNU Parted 2.3
+Using /dev/sda
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted) print all
+Model: ATA Samsung SSD 850 (scsi)
+Disk /dev/sda: 128GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+
+Number  Start   End     Size    File system  Name  Flags
+ 1      1049kB  39.8MB  38.8MB  fat32              boot
+ 2      39.8MB  128GB   128GB   ext4
+
+
+Model: ATA OCZ-AGILITY3 (scsi)
+Disk /dev/sdb: 120GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+
+Number  Start   End    Size   Type     File system  Flags
+ 1      1049kB  120GB  120GB  primary  ext4         boot
+
+
+Error: /dev/sdc: unrecognised disk label
+
+Error: /dev/sdd: unrecognised disk label
+
+Model: ATA WDC WD30EZRZ-00W (scsi)
+Disk /dev/sde: 3001GB
+Sector size (logical/physical): 512B/4096B
+Partition Table: loop
+
+Number  Start  End     Size    File system  Flags
+ 1      0.00B  3001GB  3001GB  ext4
+
+
+Model: ATA WDC WD5000AAKX-0 (scsi)
+Disk /dev/sdf: 500GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+
+Number  Start   End    Size   File system  Name  Flags
+ 1      1049kB  500GB  500GB  ext4         p1
+
+
+Model: Linux Software RAID Array (md)
+Disk /dev/md127: 3000GB
+Sector size (logical/physical): 512B/4096B
+Partition Table: loop
+
+Number  Start  End     Size    File system  Flags
+ 1      0.00B  3000GB  3000GB  ext4
+
+
+(parted) select /dev/sdf
+Using /dev/sdf
+(parted) print
+Model: ATA WDC WD5000AAKX-0 (scsi)
+Disk /dev/sdf: 500GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+
+Number  Start   End    Size   File system  Name  Flags
+ 1      1049kB  500GB  500GB  ext4         p1
+
+(parted) rm 1
+(parted) part
+  align-check TYPE N                        check partition N for TYPE(min|opt)
+        alignment
+  check NUMBER                             do a simple check on the file system
+  cp [FROM-DEVICE] FROM-NUMBER TO-NUMBER   copy file system to another partition
+  help [COMMAND]                           print general help, or help on
+        COMMAND
+  mklabel,mktable LABEL-TYPE               create a new disklabel (partition
+        table)
+  mkfs NUMBER FS-TYPE                      make a FS-TYPE file system on
+        partition NUMBER
+  mkpart PART-TYPE [FS-TYPE] START END     make a partition
+  mkpartfs PART-TYPE FS-TYPE START END     make a partition with a file system
+  resizepart NUMBER END                    resize partition NUMBER
+  move NUMBER START END                    move partition NUMBER
+  name NUMBER NAME                         name partition NUMBER as NAME
+  print [devices|free|list,all|NUMBER]     display the partition table,
+        available devices, free space, all found partitions, or a particular
+        partition
+  quit                                     exit program
+  rescue START END                         rescue a lost partition near START
+        and END
+  resize NUMBER START END                  resize partition NUMBER and its file
+        system
+  rm NUMBER                                delete partition NUMBER
+  select DEVICE                            choose the device to edit
+  set NUMBER FLAG STATE                    change the FLAG on partition NUMBER
+  toggle [NUMBER [FLAG]]                   toggle the state of FLAG on partition
+        NUMBER
+  unit UNIT                                set the default unit to UNIT
+  version                                  display the version number and
+        copyright information of GNU Parted
+(parted) mklabel
+New disk label type? gpt
+Warning: The existing disk label on /dev/sdf will be destroyed and all data on
+this disk will be lost. Do you want to continue?
+Yes/No? y
+(parted) print
+Model: ATA WDC WD5000AAKX-0 (scsi)
+Disk /dev/sdf: 500GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+
+Number  Start  End  Size  File system  Name  Flags
+
+(parted) mkpart
+Partition name?  []?
+File system type?  [ext2]? ext4
+Start? 0%
+End? 100%
