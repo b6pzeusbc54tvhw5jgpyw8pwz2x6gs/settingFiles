@@ -6,10 +6,25 @@
 2. [간단한 openssl 따라하기 및 아파치에서 SSL 디테일한 적용방법](https://opentutorials.org/course/228/4894)
 
 3. [using-self-signed-ssl-certificates](https://help.github.com/enterprise/11.10.340/admin/articles/using-self-signed-ssl-certificates/)
+3. [using-self-signed-ssl-certificates(clone)](https://github.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs/settingFiles/blob/master/manual/security/using-self-signed-ssl-certificates.md)
 
 ### expressjs (v4.13.1)
 
 위 3번에서 만든 rootCA.crt, host.crt, host.key 를 사용.
+
+
+- 노드 공식 문서
+```javascript
+const options = {
+  // These are necessary only if using the client certificate authentication
+  key: fs.readFileSync('client-key.pem'),
+  cert: fs.readFileSync('client-cert.pem'),
+
+  // This is necessary only if the server uses the self-signed certificate
+  ca: [ fs.readFileSync('server-cert.pem') ]
+};
+
+```
 
 bin/www 파일
 
