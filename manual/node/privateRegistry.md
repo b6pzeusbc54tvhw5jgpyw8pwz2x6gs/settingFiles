@@ -267,7 +267,15 @@ nvm use 0.12.9
 이렇게 하고 
 `npm install -g sinopia` 또는 `npm install -g sinopia --unsafe-perm` 명령어로 설치가 된다.
 root 상태이기 때문에 그냥 sudo도 필요없고 --unsafe-perm 도 없이 경고가 하나 뜨지만 잘 되는것 같다.
-(참고: 프록시 환경에서 unable to verify first certicifate 에러가 자꾸뜸. 0.12.7로 성공함)
+### 프록시 환경 참고:
+- 프록시 환경에서 unable to verify first certicifate 에러가 자꾸뜸. 0.12.7로 성공함.
+- 회사같은 proxy 환경에선 https 요청을 하면 rootCA를 회사인증서로 바꿔서 주는것 같다.
+- 이런경우 회사 인증서는 걍 믿으면 되니까 아래 환경을 추가하자.
+```
+process.https_proxy = "http://company.proxy.address:port";
+process.http_proxy = "http://company.proxy.address:port";
+process.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+```
 
 위 install 문제를 해결하는 2시간이 걸렸다.
 이제 설치가 되었으니 실행을 하자
