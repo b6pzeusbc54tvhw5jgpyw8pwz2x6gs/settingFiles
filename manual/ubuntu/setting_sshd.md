@@ -5,3 +5,7 @@ sudo vi /etc/ssh/sshd_config
 
 ssh 접속 허용 whitelist
 AllowUsers ssohjiro hanawasborn jjang.koo
+
+
+service ssh restart
+```
