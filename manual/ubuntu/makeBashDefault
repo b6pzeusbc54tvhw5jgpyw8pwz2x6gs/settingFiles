@@ -1,0 +1,5 @@
+```
+sudo usermod -s /bin/bash username
+```
+
+홈폴더가 없으면 `/home/username` 만들어주고 그리고 `.bashrc`, `.profile` 를 홈폴더에 만들어준다.
