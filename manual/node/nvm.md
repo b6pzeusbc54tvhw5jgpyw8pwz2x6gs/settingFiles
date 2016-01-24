@@ -10,6 +10,15 @@ replace to system node
 nvm install 4.2.3
 nvm list
 nvm use 4.2.3
+```
+
+then, change your .bashrc or .profile. 
+```
+nvm use 4.2.3
+```
+
+If needed, copy to system node (Notice! it overide system node)
+```
 n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
 ```
 
