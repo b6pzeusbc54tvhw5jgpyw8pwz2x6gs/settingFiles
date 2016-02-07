@@ -33,7 +33,6 @@
   },
 
   "globals": {
-	  "cssInJS": true,
-	  "styles": true
+	  "cssInJS": true
   }
 }
