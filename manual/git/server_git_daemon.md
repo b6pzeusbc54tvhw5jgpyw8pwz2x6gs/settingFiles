@@ -122,5 +122,5 @@ gitolate 에서도 gitweb, git-daemon 을 지원한다고한다. 그렇다면 �
 
 
 ## 결론
-보안에 민감한 회사에 다니지 않아서 github private 등을 자유롭게 쓸 수 있다면 그렇게해라.
+github private 등을 자유롭게 쓸 수 있다면 github가 좋은 선택이다.
 한달에 몇만원으로 수십시간을 살 수 있다.
