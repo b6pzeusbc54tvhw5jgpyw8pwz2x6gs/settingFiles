@@ -90,4 +90,4 @@ console.log('proxy-server now listen to port: ' + port );
 전부 127.0.0.1 로 돌려야 하기 때문에 /etc/hosts 에 `127.0.0.1  *.localhost` 를 추가하였다.
 
 클론하여 실행 할 수 있는 예제 github 참고
-https://github.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs/proxy-server
+https://github.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs/node-proxy-server
