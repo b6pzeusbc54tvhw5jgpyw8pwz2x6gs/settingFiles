@@ -24,3 +24,29 @@ http://blog.naver.com/zsgth/140207650018
 
 ### 해보자
 
+https://www.npmjs.com/package/http-proxy
+
+역시 100마디 설명보단 코드 몇줄이 보기 좋을 것 이다.
+
+```
+var http = require('http');
+var httpProxy = require('http-proxy');
+
+var proxy = httpProxy.createProxyServer({});
+var server = http.createServer( function( req, res ) {
+
+  if( req.headers.host === 'static.localhost' ) {
+    proxy.web( req, res, { target:'http://localhost:3081' });
+  } else if( req.headers.host === 'localhost' ) {
+    proxy.web( req, res, { target:'http://localhost:3015' });
+  }
+});
+
+server.listen( 3080 );
+console.log('start proxy');
+```
+
+예를들어 naver.com 이라는 dns 를 사용할땐
+m.naver.com
+music.naver.com
+movie.naver.com 등의 서브 도매인들을 구분하여 분배시켜주게된다.
