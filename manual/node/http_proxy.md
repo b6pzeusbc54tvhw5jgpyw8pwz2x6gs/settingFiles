@@ -84,3 +84,10 @@ console.log('mapInfoList: ')
 console.log( JSON.stringify( mapInfoList, null, 2) );
 console.log('proxy-server now listen to port: ' + port );
 ```
+
+
+예제에선 localhost, pc.localhost 등 localhost 앞에 sub domain 을 붙여서
+전부 127.0.0.1 로 돌려야 하기 때문에 /etc/hosts 에 `127.0.0.1  *.localhost` 를 추가하였다.
+
+클론하여 실행 할 수 있는 예제 github 참고
+https://github.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs/proxy-server
