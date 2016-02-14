@@ -1,0 +1,111 @@
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed and saved.
+ *
+ * Add your own CSS or Less to fully customize Atom.
+ * If you are unfamiliar with Less, you can read more about it here:
+ * http://lesscss.org
+ */
+
+
+/*
+ * Examples
+ * (To see them, uncomment and save)
+ */
+
+// style the background color of the tree view
+.tree-view {
+  // background-color: whitesmoke;
+}
+
+// style the background and foreground colors on the atom-text-editor-element itself
+atom-text-editor {
+  // color: white;
+  // background-color: hsl(180, 24%, 12%);
+  .gutter {
+    min-width: 0px !important;
+  }
+  .cursor-line {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+  }
+  .selection .region {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+  }
+  .cursor {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+  }
+  .edtiror .wrap-guide {
+    width: 1px;
+    background-color: red;
+  }
+  .wrap-guide {
+    visibility: visible;
+  }
+}
+// To style other content in the text editor's shadow DOM, use the ::shadow expression
+atom-text-editor::shadow .cursor {
+  // border-color: red;
+}
+
+atom-text-editor::shadow {
+  .wrap-guide {
+    visibility: visible;
+  }
+}
+
+html * {
+  background: rgba(0, 0, 0, 0) !important;
+}
+
+atom-pane, atom-panel, atom-notification {
+  background: rgba(35, 34, 53, 0.9) !important;
+}
+
+atom-overlay > * {
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+
+atom-text-editor::shadow {
+  .cursor-line {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+  }
+  .selection .region {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+  }
+  .gutter {
+    background-color: rgba(0, 0, 0, 0) !important;
+    min-width: 0px !important;
+  }
+  .wrap-guide {
+    width: 1px;
+    background-color: red;
+  }
+}
+
+.settings-view input[type="checkbox"]:before, .settings-view input[type="checkbox"]:after {
+
+  background-color: rgb(102, 255, 117);
+}
+
+.markdown-preview[data-use-github-style] {
+
+  background-color: ivory !important;
+}
+
+.terminal-plus .xterm {
+  background-color: rgba(18, 13, 52, 0.82) !important;
+
+  ::selection {
+    background-color: red;
+  }
+
+  .terminal-cursor {
+    background-color: ivory !important;
+  }
+}
+
+.terminal-plus.status-bar {
+  display: none;
+}

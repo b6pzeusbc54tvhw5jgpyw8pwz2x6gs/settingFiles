@@ -1,0 +1,54 @@
+"*":
+  "advanced-open-file":
+    fuzzyMatch: true
+  "atom-ternjs":
+    excludeLowerPriorityProviders: true
+    guess: false
+    inlineFnCompletion: false
+  "autocomplete-plus": {}
+  core:
+    packagesWithKeymapsDisabled: [
+      "styleguide"
+    ]
+  "cursor-history": {}
+  "easy-motion-redux": {}
+  editor:
+    fontSize: 16
+    invisibles: {}
+    scrollPastEnd: true
+    showIndentGuide: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+    softWrapHangingIndent: 4
+    zoomFontWhenCtrlScrolling: true
+  "exception-reporting":
+    userId: "86b6e64f-b501-4bca-fe98-0a29d9a9bf69"
+  linter:
+    errorPanelHeight: 59
+  "linter-eslint":
+    eslintrcPath: "/Users/ssohjiro/runningServer/gmwDevPortal/trunk/client/.eslintrc"
+    globalNodePath: "/usr/local"
+    lintHtmlFiles: true
+    useGlobalEslint: true
+  "markdown-preview":
+    liveUpdate: false
+    useGitHubStyle: true
+  "one-dark-ui":
+    layoutMode: "Compact"
+  react: {}
+  term3: {}
+  "terminal-plus":
+    core:
+      scrollback: 10000
+    style: {}
+    toggles:
+      autoClose: true
+  "vim-mode": {}
+  welcome:
+    showOnStartup: false
+  "wrap-style":
+    style:
+      lineBreak: "auto"
+      overflowWrap: "normal"
+      whiteSpace: "normal"
+      wordBreak: "break-all"
