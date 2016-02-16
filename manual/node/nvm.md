@@ -25,6 +25,21 @@ n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,
 I think A is better than B! ( for Linux, osX. )
 
 
+
+A 선택시 sudo node, sudo npm 등이 안된다.
+https://github.com/creationix/nvm/issues/43
+참고하여, `alias sudo='sudo env PATH=$PATH:$NVM_BIN'` 등록
+
+
+
+
+
+
+
+
+
+
+
 ## install for window
 
 download and install from setup file in [https://github.com/coreybutler/nvm-windows/releases](https://github.com/coreybutler/nvm-windows/releases)
