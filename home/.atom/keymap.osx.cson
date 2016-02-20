@@ -27,7 +27,6 @@
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
 'atom-text-editor':
-  'ctrl-e': 'unset!'
   'ctrl-c': 'core:cancel'
 
 'body':
@@ -36,6 +35,15 @@
 'atom-text-editor.vim-mode:not(.insert-mode)':
   '#': 'find-and-replace:use-selection-as-find-pattern'
   '/': 'find-and-replace:show'
+  'ctrl-e': 'keyboard-scroll:scrollDown'
+  'ctrl-y': 'keyboard-scroll:scrollUp'
+
+'atom-text-editor.vim-mode.insert-mode':
+  'ctrl-y': 'keyboard-scroll:scrollUp'
+
+'atom-text-editor.vim-mode':
+  'ctrl-e': 'keyboard-scroll:scrollDown'
+  'ctrl-y': 'keyboard-scroll:scrollUp'
 
 'atom-workspace':
   'ctrl-i':     'cursor-history:next'
