@@ -228,7 +228,7 @@ private registry에선 당연히 이 webpage 띄우는 것도 모르겠고 couch
 couchdb 까지 안쓰고 파일로 module 을 관리해주며 없는 모듈은 official registry것을 자동으로 땡겨준다고한다.
 npm 을 훅 해서 동작하는 원리인가.
 모든 npm 명령어가 다 지원되는건 아니라고 하니 npm 을 수정하여 만든 또다른 npm인가
-이런경우 npm 기존 높은 버전과의 차이가 많이 날텐데.. 걱정스럽기도 하지만 그래도 쉽게 설치할수 있다니 한번 ㄱ ㄱ
+이런경우 npm 기존 높은 버전과의 차이가 많이 날텐데.. 걱정스럽기도 하지만 그래도 쉽게 설치할수 있다니 한번 Go!
 
 [sinopia.md](https://github.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs/settingFiles/blob/b6pzeusbc54tvhw5jgpyw8pwz2x6gs-patch-3/manual/node/sinopia.md)
 
