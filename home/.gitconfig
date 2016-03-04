@@ -9,3 +9,23 @@
 	proxy = 
 [https]
 	proxy = 
+
+
+# Here are the aliases I use everyday that support this git workflow. Place these in your ~/.gitconfig.
+# http://www.sparkhost.co/clients/knowledgebase/142/Using-Gitolite-to-securely-deploy-a-website-with-version-control-based-on-the-GitHub-Flow.html
+
+[alias]
+  c = commit -am
+  a = add -A
+  co = checkout
+  new = !sh -c 'git checkout master && git fetch origin && git merge --ff origin/master && git checkout -b $1 master && git push -u origin $1' -
+  up = !git fetch origin && git rebase -p origin/master
+  ir = !git rebase -i origin/master
+  next = !git add -A && git rebase --continue
+  done = !git fetch origin && git rebase -p origin/master && git push
+  staging = !sh -c 'git checkout master && git fetch origin && git merge --ff origin/master && git merge --no-ff $1 && git fetch origin && git rebase -p origin/master && git push' -
+  deploy = !sh -c 'git checkout master && echo $1 > tag && git add tag && git commit -am \"updated tag file to $1\" && git tag -a $1 -m \"Release: $1  - Release name: $(cat release)\" && git fetch origin && git rebase -p origin/master && git push --tags origin master' -
+  fix = !sh -c 'git checkout -b $1 master && git fetch origin && git rebase -p origin/master' -
+  fixed = !git fetch origin && git rebase -i origin/master && git push origin master
+  rmb = !sh -c 'git branch -D $1 && git push origin :$1' -
+  l = log --graph --pretty=format:'%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s'
