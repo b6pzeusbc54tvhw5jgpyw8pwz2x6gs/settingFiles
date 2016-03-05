@@ -148,3 +148,42 @@ bfg 실행 결과의 마지막 문구이다.
 이름도 모르는 누군가에게.
 
 감사하며 Flattr! 오랜만에 기분좋은 기부~
+
+
+
+
+### 20160305 추가
+
+bfs 로 파일을 삭제한 후 어떤 변경하지 않는 커밋들이 생길 수 있다.
+`git rebase` 를 이용하여 이런 커밋들을 다른 커밋과 합쳐서 클린하게 만들수 있다.
+```
+$ git rebase -i HEAD~1
+```
+--interactive 옵션을 붙이면 에디터등이 열리며 앞의 명령어를 수정하며 작업을 할 수 있다.
+```
+pick fb40f4a Separate only the server from the unified project
+
+# Rebase 938dc9c..fb40f4a onto 938dc9c
+#
+# Commands:
+#  p, pick = use commit
+#  r, reword = use commit, but edit the commit message
+#  e, edit = use commit, but stop for amending
+#  s, squash = use commit, but meld into previous commit
+#  f, fixup = like "squash", but discard this commit's log message
+#  x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+```
+
+HEAD~1 로 하여 1개만 뜬것이구 이런 아무것도 변경하지 않는 커밋들이 여러개라면
+HEAD~3, HEAD~4 처럼 원하는 만큼 합쳐버릴수 있다.
+
+
+
