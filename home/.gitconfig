@@ -12,6 +12,8 @@
 # http://www.sparkhost.co/clients/knowledgebase/142/Using-Gitolite-to-securely-deploy-a-website-with-version-control-based-on-the-GitHub-Flow.html
 
 [alias]
+  st = status
+  ci = commit -am
   c = commit -am
   a = add -A
   co = checkout
