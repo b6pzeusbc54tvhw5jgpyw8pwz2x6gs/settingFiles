@@ -182,8 +182,31 @@ pick fb40f4a Separate only the server from the unified project
 # Note that empty commits are commented out
 ```
 
-HEAD~1 로 하여 1개만 뜬것이구 이런 아무것도 변경하지 않는 커밋들이 여러개라면
-HEAD~3, HEAD~4 처럼 원하는 만큼 합쳐버릴수 있다.
+HEAD 로부터 3개 의 커밋을 합치려면 HEAD~3 이렇게 하면됨.
 
+성공적으로 된 후 `git reflog` 로 확인하면
+```
+8cc9a38 HEAD@{0}: rebase -i (finish): returning to refs/heads/master
+8cc9a38 HEAD@{1}: rebase -i (pick): Separate only the server from the unified project
+3bc3d7b HEAD@{2}: rebase -i (start): checkout HEAD~2
+```
 
+fb40f4a4ff762cc5a3457cd21ac8c98cf79c2591 - HEAD
+938dc9cdf05acaf440938b0acf8d77136da86ee6
+3bc3d7b5ac2b2f315231a0419f0c42b8cb5a4c49
+
+`$ git rebase -i HEAD~1` 을 수행하니, (에디트 없이 그냥 저장닫기 후)
+아래와 같이 fb40f, 938dc 라는 커밋이 938cc9a38 이라는 새로운 커밋으로 합쳐짐
+```
+8cc9a3860b08df7ad46451a60df182fd024125d6 - HEAD
+3bc3d7b5ac2b2f315231a0419f0c42b8cb5a4c49
+```
+
+HEAD를 확인하는 방법은
+```
+$ cat .git/HEAD
+ref: refs/heads/master
+$ cat .git/refs/heads/master
+8cc9a3860b08df7ad46451a60df182fd024125d6
+```
 
