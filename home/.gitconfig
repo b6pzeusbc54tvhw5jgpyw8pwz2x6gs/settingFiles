@@ -1,6 +1,3 @@
-[user]
-	name=
-	email=
 [commit]
 	template=/home/ssohjiro/.commit-msg_template.txt
 [url "https://"]
