@@ -1,10 +1,11 @@
 # filter-branch
 
-## when?
+## Case 1
 
 server, client, deploy code, misc_tools 프로젝트와 관련된 코드를 모두 한 project 로 두었는데, (old_project 라 하자)
 서로 직접적인 디펜던시가 없는 프로젝트들이라 각각 프로젝트를 따서 관리하려고 한다.
 
+### 시행착오
 [remove_sensitive_data.md](https://github.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs/settingFiles/blob/master/manual/git/remove_sensitive_data.md) 를 참고하여 
 
 ```
@@ -82,6 +83,7 @@ dirty commits 들이 많이 생긴다.
 이 더티 커밋들을 없애려고 git rebase -i --root 를 한 후 삭제를 하고 그러느라
 rebase 명령어를 열심히 배웠다.
 
+### 솔루션
 결국 git-scm.com 공식 사이트의 e-book 에 있는 더 좋은 솔루션으로 해결함. [Git-도구-히스토리-단장하기](https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-%EB%8B%A8%EC%9E%A5%ED%95%98%EA%B8%B0)
 참고로 나는 bare 저장소에서 하였다.
 ```
@@ -104,6 +106,33 @@ filter-branch 를 한번 하면 refs/original 폴더에 백업파일이 생기�
 두번째 명령어를 날린땐 이 백업 파일을 덮어쓴다는 -f 옵션을 붙여야한다.
 전전 형상으로 돌아가지 못할것 같으니 주의하자.
 
+
+
+## Case 2
+[remove_sensitive_data.md](https://github.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs/settingFiles/blob/master/manual/git/remove_sensitive_data.md) 에서 특정파일을 지우는 것을 filter-branch 를 통해서 해보자
+
+### 솔루션
+Command:
+```
+git filter-branch --tree-filter 'rm -f jumphostInfo.json scpReceiver.js scpSender.js sendToJumphost.js gulpfile.js pm2Starter.js' --prune-empty -f HEAD
+```
+Result:
+```
+Rewrite 2b8ae2f6b615b33ebc37931d3c1cea43d72bb2ca (20/20)
+Ref 'refs/heads/master' was rewritten
+```
+한방에 끝.
+
+--prune-empty 옵션은 파일을 지우고 빈커밋이(commits with empty changeset) 생기면 빈 커밋을 없애주는 옵션이다.
+[stackoverflow](http://stackoverflow.com/questions/5324799/git-remove-commits-with-empty-changeset-using-filter-branch)
+혹시 빠뜨렸다면 따로 날려도 되는듯.
+```
+git filter-branch --tree-filter --prune-empty -f HEAD
+```
+
+
 ## 결론
 Git은 사실 많이 정리할게 없다. 공식 사이트의 가이드 문서와 e-book 에 너무 잘 정리되어 있다.
 물론 더 깊게 공부해야하거나 대규모 프로젝트의 관리자라 수많은 예측 불가능한 문제를 해결해야하는 고수가 되려면 이 문서와 이북이 부족할수도 있겠지만 우선 내가 쓰는 범위안에선 거의 다른 참고가 필요 없을 정도였다.
+
+BFS 는 참 좋은 소프트웨어이자 좋은 프로젝트이다. 하지만 git 에서 기본으로 지원하는 기능만으로도 내겐 충분한것 같다. 기본기능을 사용하면 굉장히 시간이 오래걸리거나 좀 더 디테일한 history 단장을 하고 싶을때, BFS 사용을 고려해보자. 당장에 해보진 않다도 좋다.
