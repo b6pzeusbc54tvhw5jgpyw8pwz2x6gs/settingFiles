@@ -96,8 +96,62 @@ build:
 
 prject - builds 에 가보면 fail 결과를 볼 수 있었다.
 ![](https://raw.githubusercontent.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs/settingFiles/master/manual/gitlab/gitlab_ci.002.png)
+`http://gitlab-ci-token:xxxxxx@utopos.me/mygroup/ci-test-project.git/` not found 인데 난 gitlab 8070 포트를 쓰고 있고, xxxxxx 주소는 왠지 디폴트 주소같다. 이걸 설정하면 될것 같다.
+
+이 셋팅방법은 왠지 [install.md](https://github.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs/settingFiles/blob/master/manual/gitlab/install.md) 를 작성할때 스쳐 지나간 기억이 있다.
 
 ### 1.4. gitlab CI 셋팅
+[공식 가이드](https://gitlab.com/gitlab-org/omnibus-gitlab/tree/629def0a7a26e7c2326566f0758d4a27857b52a3/doc/gitlab-ci/README.md) 를 보며 `/etc/gitlab/gitlab.rb` 파일안에 ci_external_url 을 설정하자.
+
+그냥 gitlab 주소와 똑같은 도매인/포트로 설정하였다.
+
+(혹시 gitlab 셋팅을 external_url 에는 주소만 쓰고 listen_port 에 포트를 따로 썼다면, gitlab 페이지의 builds 메뉴에서 몇몇 링크에 포트가 안들어가는 버그가 있다.)
+
+`gitlab.rb`파일을 수정하였으면 `sudo gitlab-ctl reconfigure` 
+그리고 gitlab 페이지 runner 메뉴에서 위에 등록한 runner 를 지우고 다시 등록하니,
+
+Build #6 for commit 92a58db7 from master
+```
+gitlab-ci-multi-runner 1.0.4 (014aa8c)
+Using Shell executor...
+Running on ssohjiroSeoul...
+Fetching changes...
+HEAD is now at 8bf97ee Add .gitlab-ci.yml
+From http://utopos.me:8070/gmw/devportal-server
+   8bf97ee..92a58db  master     -> origin/master
+Checking out 92a58db7 as master...
+Previous HEAD position was 8bf97ee... Add .gitlab-ci.yml
+HEAD is now at 92a58db... update .gitlab-ci.yml
+$ echo "hello before_script"
+hello before_script
+$ echo "hello test"
+hello test
+
+Build succeeded.
+```
+
+Build #7 for commit 92a58db7 from master
+```
+gitlab-ci-multi-runner 1.0.4 (014aa8c)
+Using Shell executor...
+Running on ssohjiroSeoul...
+Fetching changes...
+HEAD is now at 92a58db update .gitlab-ci.yml
+Checking out 92a58db7 as master...
+HEAD is now at 92a58db... update .gitlab-ci.yml
+$ echo "hello before_script"
+hello before_script
+$ echo "hello build"
+hello build
+
+Build succeeded.
+```
+
+.gitlab-ci.yml 안의 test 와 build 스크립트가 각각 실행되었다.
+두 스크립트 모두 실행되기전에 before_change 가 실행된것을 볼수 있다.
+
+결과는 둘다 passed 로 기분좋은 녹색불이 켜졌다.
 
 
 ## 결론
+일단 hello world 는 성공!
