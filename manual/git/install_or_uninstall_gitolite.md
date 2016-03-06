@@ -12,6 +12,6 @@ https://git-scm.com/book/ko/v2/Git-%EC%84%9C%EB%B2%84-SSH-%EA%B3%B5%EA%B0%9C%ED%
 비밀키-공개키 개념을 확실히 모른다면 그냥 하지 말것.
 
 
-# unstall
+# uninstall
 
 [official guide](http://gitolite.googlecode.com/git-history/f023591183365980d11c1ba352461bea9863746f/doc/uninstall.html)
