@@ -89,6 +89,7 @@ gitlab-ci-multi-runner register --shell bash // o
 권한을 주고 절대경로를 사용하는 하드한 방법을 사용한다면 좀 더 쉽게 했겠지만 나중에 고달파진다.
 그래서 쓴 방법이 `. ~/.nvm/nvm.sh` nvm.sh 를 실행하면 nvm 명령어를 현재 프로세스에 등록? 하나보다. TODO study
 .gitlab-ci.yml 을 보자.
+
 ```
 before_script:
   - echo "hello before_script"
@@ -105,6 +106,7 @@ build:
   script:
     - echo "hello build"
 ```
+
 커밋하고 푸쉬하니 
 ```
 gitlab-ci-multi-runner 1.0.4 (014aa8c)
@@ -136,3 +138,6 @@ gitlab-runner 계정에서 run 으로 돌리던 러너를 끄고, gitlab Builds 
 아까 성공했던 빌드가 잘 실행되는지 재시도 버튼으로 확인.
 성공.!
 
+## 자 이제
+본격적으로 .gitlab-ci.yml 파일을 작성해보자.
+[공식 가이드](http://doc.gitlab.com/ce/ci/yaml/README.html)
