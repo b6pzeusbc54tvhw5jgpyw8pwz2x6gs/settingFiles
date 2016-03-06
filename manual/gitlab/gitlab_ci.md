@@ -30,7 +30,10 @@ hello world, 시작은 반이라고 하지만 여기선 그게 전부이다. (�
 * [Manual installation (advanced)](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/install/linux-manually.md)
 * [Bleeding edge (development)](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/install/bleeding-edge.md)
 * [Install development environment](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/development/README.md)
-* 
+
+1.2. 셋업
+설치가 끝나면 가이드에 나와있는것처럼 `sudo gitlab-ci-multi-runner register` 실행
+gitlab-ci token 에 
 
 
 ## 결론
