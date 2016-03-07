@@ -1,9 +1,16 @@
+# tree
+
+## install
+
 ### in ubuntu
+```
 sudo apt-get install tree
+```
 
-### osx
+### in osx
+```
 brew install tree
-
+```
 
 ### usage
 ```
