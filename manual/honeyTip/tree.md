@@ -1,4 +1,5 @@
 # tree
+ls -R 보다 훨씬 좋은 뷰를 보여주는 tree
 
 ## install
 
@@ -12,7 +13,7 @@ sudo apt-get install tree
 brew install tree
 ```
 
-### usage
+## usage
 ```
 tree
 ```
