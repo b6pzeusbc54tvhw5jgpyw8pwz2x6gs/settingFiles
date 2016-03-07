@@ -1,3 +1,14 @@
+
+## make branch
+```
+git checkout -b [new_branch_name]
+git push origin [new_branch_name]
+```
+
+
+
+## rename branch
+
 ```
 git branch -m old_branch_name new_branch_name
 ```
