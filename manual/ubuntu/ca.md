@@ -2,10 +2,10 @@
 $ sudo mkdir /usr/share/ca-certificates/mycompany
 $ sudo cp samsung.crt /usr/share/ca-certificates/mycompany/mycompany.crt
 # (not cer, but crt!)
-```
 
 $ sudo dpkg-reconfigure ca-certificates
 $ sudo update-ca-certificates
+```
 
 in Chrome
 chrome - setting - https/ssl - Authoriries - import - select "mycompany.crt" - check all checkbox
