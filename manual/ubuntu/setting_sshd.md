@@ -9,3 +9,10 @@ AllowUsers ssohjiro hanawasborn jjang.koo
 
 service ssh restart
 ```
+
+
+
+### restart
+```
+sudo restart ssh
+```
