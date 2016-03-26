@@ -132,7 +132,7 @@ openssl x509 -req -days 3650 -in san_domain_com.csr -signkey san_domain_com.key 
 ```
 
 이때 rootCA 와 san_domain_com 의 commonName 은 반드시 같아야한다.
-그렇지 않으면 기관과 이슈어의 commonName 이 다르다면서 INVALID_COMMON_NAME ? 이런 에러가난다(크롬에서)
+그렇지 않으면 기관과 이슈어의 commonName 이 다르다면서 NET::ERR_CERT_COMMON_NAME_INVALID 이런 에러가난다(크롬에서)
 
 rootCA 키 발급부터 정리하자면,
 
