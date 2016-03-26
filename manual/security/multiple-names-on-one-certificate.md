@@ -128,7 +128,7 @@ Configure SSL settings if you want your site to require SSL, or to interact in a
 # my case
 rootCA 로 부터 발급받기
 ```
-openssl x509 -req -days 3650 -in san_domain_com.csr -signkey san_domain_com.key -out san_domain_com.crt -CA rootCA.crt -CAkey rootCA.key
+openssl x509 -req -days 3650 -in san_domain_com.csr -signkey san_domain_com.key -out san_domain_com.crt -CA rootCA.crt -CAkey rootCA.key -extensions v3_req -extfile openssl.cnf
 ```
 
 이때 rootCA 와 san_domain_com 의 commonName 은 반드시 같아야한다.
@@ -141,7 +141,7 @@ openssl genrsa -out rootCA.key 2048
 openssl req -x509 -new -nodes -key rootCA.key -days 365 -out rootCA.crt
 openssl genrsa -out san_domain_com.key 2048
 openssl req -new -out san_domain_com.csr -key san_domain_com.key -config openssl.cnf
-openssl x509 -req -days 3650 -in san_domain_com.csr -signkey san_domain_com.key -out san_domain_com.crt -CA rootCA.crt -CAkey rootCA.key
+openssl x509 -req -days 3650 -in san_domain_com.csr -signkey san_domain_com.key -out san_domain_com.crt -CA rootCA.crt -CAkey rootCA.key -extensions v3_req -extfile openssl.cnf
 ```
 
 내가 사용한 `openssl.cnf`
