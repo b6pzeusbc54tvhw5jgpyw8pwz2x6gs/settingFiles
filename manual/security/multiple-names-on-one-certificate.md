@@ -123,3 +123,13 @@ After this fix, you can change the SSL binding for all those web servers to use 
 Configure SSL settings if you want your site to require SSL, or to interact in a specific way with client certificates. Click the site node in the tree view to go back to the site's home page. Double-click the `SSL Settings` feature in the middle pane.
 
 
+
+
+# my case
+rootCA 로 부터 발급받기
+```
+openssl x509 -req -days 3650 -in san_domain_com.csr -signkey san_domain_com.key -out san_domain_com.crt -CA rootCA.crt -CAkey rootCA.key
+```
+
+이때 rootCA 와 san_domain_com 의 commonName 은 반드시 같아야한다.
+그렇지 않으면 기관과 이슈어의 commonName 이 다르다면서 INVALID_COMMON_NAME ? 이런 에러가난다(크롬에서)
