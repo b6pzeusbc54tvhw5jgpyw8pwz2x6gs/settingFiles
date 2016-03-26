@@ -143,3 +143,34 @@ openssl genrsa -out san_domain_com.key 2048
 openssl req -new -out san_domain_com.csr -key san_domain_com.key -config openssl.cnf
 openssl x509 -req -days 3650 -in san_domain_com.csr -signkey san_domain_com.key -out san_domain_com.crt -CA rootCA.crt -CAkey rootCA.key
 ```
+
+내가 사용한 `openssl.cnf`
+```
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+
+[req_distinguished_name]
+countryName = Country Name (2 letter code)
+countryName_default = US
+stateOrProvinceName = State or Province Name (full name)
+stateOrProvinceName_default = MN
+localityName = Locality Name (eg, city)
+localityName_default = Minneapolis
+organizationalUnitName	= Organizational Unit Name (eg, section)
+organizationalUnitName_default	= Domain Control Validated
+commonName = Common Name(max 64)
+commonName_default = Your own utopos
+commonName_max	= 64
+
+[ v3_req ]
+# Extensions to add to a certificate request
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = utopos.me
+DNS.2 = *.utopos.me
+IP.1 = 127.0.0.1
+```
