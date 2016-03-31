@@ -1,4 +1,10 @@
+[#꿀벌개발일지](http://ohgyun.com/429)
+
+
+
+
 [#github guide](https://help.github.com/enterprise/11.10.340/admin/articles/using-self-signed-ssl-certificates/)
+
 
 #Using self-signed SSL certificates
 In many cases, it's preferable to use self-signed SSL certificates for internal applications to avoid the cost of one signed by an external certificate authority. Unfortunately, you can run into problems with some clients and services that won't recognize your self-signed certificate as trusted. In particular, this can affect service hooks that POST to external services that use self-signed certificates. To avoid problems with service hook payload deliveries, make sure you've followed the steps below to create your internal self-signed certificates and install your root CA certificate on your GitHub Enterprise appliance.
