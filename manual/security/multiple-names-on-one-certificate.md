@@ -126,6 +126,11 @@ Configure SSL settings if you want your site to require SSL, or to interact in a
 
 
 # my case
+Self sign 하기
+```
+openssl x509 -req -days 3650 -in host.csr -signkey host.key -out host.crt -extensions v3_req -extfile openssl.cnf
+```
+ 
 rootCA 로 부터 발급받기
 ```
 openssl x509 -req -days 3650 -in san_domain_com.csr -signkey san_domain_com.key -out san_domain_com.crt -CA rootCA.crt -CAkey rootCA.key -extensions v3_req -extfile openssl.cnf
