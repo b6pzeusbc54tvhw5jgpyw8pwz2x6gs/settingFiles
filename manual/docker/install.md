@@ -20,3 +20,11 @@ docker search ubuntu
 ```
 
 이런식으로 사용하면됨
+
+
+# install docker-compose
+
+```shell
+$ sudo apt-get -y install python-pip
+$ sudo pip install docker-compose
+```
