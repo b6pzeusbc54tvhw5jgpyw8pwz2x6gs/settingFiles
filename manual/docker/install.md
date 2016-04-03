@@ -5,7 +5,7 @@ binary 를 걍 직접 받아
 `/usr/local/bin/docker` 로 실행가능하게 복사하고 아래 디펜던시 설치해준후
 ```
 $ sudo apt-get update
-$ sudo apt-get install cgroup-lite linux-image-extra-3.13.0-74-generic linux-image-extra-virtual git git-man liberror-perl libsystemd-journal0
+$ sudo apt-get install cgroup-lite aufs-tools linux-image-extra-3.13.0-74-generic linux-image-extra-virtual git git-man liberror-perl libsystemd-journal0
 ```
 
 타이핑 매번 하기 귀찮으니 아래 alias 설정후
