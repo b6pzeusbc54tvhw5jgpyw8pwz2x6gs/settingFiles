@@ -8,6 +8,14 @@ $ sudo apt-get update
 $ sudo apt-get install cgroup-lite aufs-tools linux-image-extra-3.13.0-74-generic linux-image-extra-virtual git git-man liberror-perl libsystemd-journal0
 ```
 
+## docker binary 받기
+```
+wget https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz
+```
+[공식 사이트 참고](https://docs.docker.com/engine/installation/binaries/)
+
+
+
 타이핑 매번 하기 귀찮으니 아래 alias 설정후
 ```
 alias dockerd='sudo HTTP_PROXY=http://company.proxy.address:port HTTPS_PROXY=http://company.proxy.address:prot docker daemon &'
