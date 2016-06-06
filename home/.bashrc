@@ -198,3 +198,8 @@ export SVN_MERGE=/usr/bin/vimMergeForSvn
 export NVM_DIR="/home/ssohjiro/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+alias LOCAL_NODE_PATH="PATH=$PATH:$(pwd)/node_modules/.bin"
+
