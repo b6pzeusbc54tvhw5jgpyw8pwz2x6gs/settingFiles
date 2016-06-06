@@ -1,0 +1,11 @@
+name: inside-out
+script   : bin/server.js
+instances: 1
+min_uptime: 10000
+max_restarts: 3
+exec_mode: cluster
+watch  : [src, bin]
+env    :
+  NODE_ENV: development
+  PORT: 3000,
+  APIPORT: 3030
