@@ -204,6 +204,7 @@ let g:ftplugin_sql_omni_key = '<C-j>'
 let g:syntastic_javascript_checkers = ['eslint']
 "let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_javascript_eslint_exec = 'eslint-project-relative'
 
 
 "let g:ctrlp_map = '<c-p>'
@@ -225,4 +226,29 @@ map ,w :w<cr>
 
 " Backup with current time and user string. ex) :BA successAjax!!
 command! -nargs=1 BA :call WriteBackup(<f-args>)
+
+
+" manual toggle paste - nopaste
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+
+" automated toggle paste - nopaste
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+"80 column warning
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+
+map ,80 :match OverLength /\%81v.\+/
+" to disable :match
 
