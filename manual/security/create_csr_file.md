@@ -1,9 +1,9 @@
 ```
-$ openssl req -new -newkey rsa:2048 -nodes -keyout devp.me.key -out devp.me.csr
+$ openssl req -new -newkey rsa:2048 -nodes -keyout mydomain.com.key -out mydomain.com.csr
 Generating a 2048 bit RSA private key
 ........+++
 .....+++
-writing new private key to 'devp.me.key'
+writing new private key to 'mydomain.com.key'
 -----
 You are about to be asked to enter information that will be incorporated
 into your certificate request.
@@ -17,7 +17,7 @@ State or Province Name (full name) [Some-State]:KO
 Locality Name (eg, city) []:
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:devp
 Organizational Unit Name (eg, section) []:devp
-Common Name (e.g. server FQDN or YOUR name) []:*.devp.me
+Common Name (e.g. server FQDN or YOUR name) []:*.mydomain.com
 Email Address []:
 
 Please enter the following 'extra' attributes
@@ -26,7 +26,7 @@ A challenge password []:
 An optional company name []:
 
 ~/ssl ssohjiro@ssohjiroUbuntu14 13s
-❯ cat devp.me.csr
+❯ cat mydomain.com.csr
 -----BEGIN CERTIFICATE REQUEST-----
 X
 -----END CERTIFICATE REQUEST-----
